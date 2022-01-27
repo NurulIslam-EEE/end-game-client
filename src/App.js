@@ -13,6 +13,7 @@ import PrivateRoute from "./components/routes/PrivateRoute";
 import AllBlogs from "./components/Pages/Dashboard/AllBlogs";
 import UpdateBlog from "./components/Pages/Dashboard/UpdateBlog";
 import BlogDetails from "./components/Pages/Home/BlogDetails/BlogDetails";
+import Review from "./components/Pages/Dashboard/Review";
 
 function App() {
   return (
@@ -33,13 +34,17 @@ function App() {
                 path="/dashboard/makeAdmin"
                 element={<MakeAdmin></MakeAdmin>}
               ></Route>
+              <Route
+                path="/dashboard/reviews"
+                element={<Review></Review>}
+              ></Route>
 
-<Route
+              <Route
                 path="/dashboard/allBlogs"
                 element={<AllBlogs></AllBlogs>}
               ></Route>
-            <Route
-                path="/dashboard/update/:id"
+              <Route
+                path="/dashboard/allBlogs/update/:id"
                 element={<UpdateBlog></UpdateBlog>}
               ></Route>
 

@@ -17,12 +17,12 @@ const Blog = ({ data }) => {
     return (
         <div className="card">
             <div>
-                <img alt="" className="w-full h-60" src={image} />
+                <img alt="" className="w-full h-40" src={image} />
             </div>
-            <div className="p-10">
+            <div className="p-5">
                 <h2 className="text-2xl font-bold">{destination}</h2>
-                <p className="text-gray-600 my-3"><span className="text-xl font-bold text-tomato">$ {cost}</span> / per person</p>
-                <div className="my-5 flex p-3 bg-gray-100 rounded-lg text-gray-500 font-medium justify-around">
+                <p className="text-gray-600 my-1"><span className="text-xl font-bold text-tomato">$ {cost}</span> / per person</p>
+                <div className="my-5 flex p-2 bg-gray-100 rounded-lg text-gray-500 font-medium justify-around">
                     <div className="flex">
 
                         <FaClock className="mr-2" />{time} days
@@ -36,7 +36,7 @@ const Blog = ({ data }) => {
                     </div>
                 </div>
                 <p className="text-gray-600">{description.slice(0, 80)}</p>
-                <div className="text-center mt-5"><button className="btn-1" onClick={handleClick}>Details</button></div>
+                <div className="text-center "><button className="btn bg-blue-300 text-white rounded py-1 px-2 font-bold " onClick={handleClick}>Details</button></div>
             </div>
         </div>
     );

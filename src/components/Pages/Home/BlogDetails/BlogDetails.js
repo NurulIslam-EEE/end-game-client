@@ -17,6 +17,8 @@ const BlogDetails = () => {
     const { user } = useAuth();
     const { id } = useParams();
     const [blog, setBlog] = useState({});
+    const [reviews, setReviews] = useState([]);
+    const [compareReview, setCompareReview] = useState([]);
     const [rating, setRating] = React.useState();
     // console.log(blog, rating, blog.rating)
     useEffect(() => {
@@ -64,6 +66,17 @@ const BlogDetails = () => {
 
 
     };
+    useEffect(() => {
+        fetch(`https://dry-journey-24779.herokuapp.com/review`)
+            .then((res) => res.json())
+            .then((data) => setReviews(data));
+    }, []);
+    const handleCompare = (id) => {
+        const filterReview = reviews.filter(review => review._id === id)
+        const allReviews = [...filterReview, ...compareReview]
+        setCompareReview(allReviews.slice(0, 3));
+        console.log(allReviews.slice(0, 3))
+    }
     return (
         <div className="container my-12">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10 my-20">
@@ -144,6 +157,34 @@ const BlogDetails = () => {
                             value="Submit Review"
                         />
                     </form>
+                </div>
+            </div>
+            {compareReview.length > 0 && <div>
+                <h1>Comparison</h1>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-10 my-20">
+
+                    {compareReview.map(com => (
+                        <>
+                            <h4>{com.name}</h4>
+                            <h5>{com.description}</h5></>
+                    ))}
+
+                </div>
+            </div>}
+
+            <div>
+                <h2>Users review</h2>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-10 my-20">
+
+                    {
+                        reviews.map(review => <div key={review._id}>
+                            <p onClick={() => console.log(review._id)}>{review.name}</p>
+                            <p>{review.description}</p>
+                            <button className='bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-1 px-2 border border-blue-500 hover:border-transparent rounded' onClick={() => handleCompare(review._id)}>Compare</button>
+                        </div>)
+                    }
                 </div>
             </div>
         </div>

@@ -11,7 +11,7 @@ const AddNewForm = () => {
 
     const onSubmit = (data) => {
         console.log(data);
-        data["rating"] = rating;
+        data["rating"] = 0;
         data["status"] = "approved";
         axios
             .post("https://dry-journey-24779.herokuapp.com/blogs", data)
@@ -32,29 +32,35 @@ const AddNewForm = () => {
 
                 <div className="flex flex-col space-y-4">
                     {/* title  */}
-                    <input className="input-primary" placeholder="Blog Title" {...register("title", { required: true })} />
+                    <input type="text" className="input-primary" placeholder="Title" {...register("title", { required: true })} />
                     {/* description  */}
-                    <textarea cols="30" rows="9" className="input-primary resize-none" placeholder="Blog Description" {...register("description", { required: true })}></textarea>
+                    <textarea cols="30" rows="9" className="input-primary resize-none" placeholder="Description" {...register("description", { required: true })}></textarea>
+                    {/* category  */}
+                    <input className="input-primary" type="time" placeholder="Time" {...register("time", { required: true })} />
                 </div>
 
                 <div className="flex flex-col space-y-4">
                     {/* Image URL  */}
-                    <input className="input-primary" placeholder="Image Link" {...register("image", { required: true })} />
-                    {/* duration  */}
-                    <input className="input-primary" placeholder="Tour Duration" {...register("duration", { required: true })} />
+                    <input type="text" className="input-primary" placeholder="Image Link" {...register("image", { required: true })} />
+                    {/* date  */}
+                    <input type="date" className="input-primary" placeholder="Date" {...register("date", { required: true })} />
+                    {/* category  */}
+                    <input className="input-primary" placeholder="Category" {...register("category", { required: true })} />
                     {/* location  */}
-                    <input type="number" className="input-primary" placeholder="location" {...register("location", { required: true })} />
+                    <input type="text" className="input-primary" placeholder="location" {...register("location", { required: true })} />
                     {/* expense  */}
-                    <input type="number" className="input-primary" placeholder="Expense" {...register("expense", { required: true })} />
-                    {/* country  */}
+                    <input type="number" className="input-primary" placeholder="Cost" {...register("cost", { required: true })} />
+                    {/* info  */}
+                    <input type="text" className="input-primary" placeholder="Traveler Info" {...register("info", { required: true })} />
+                    {/*    
                     <p className="text-gray-600 font-primary">
-                        Give a rating*
-                    </p>
-                    <Rating
-                        onChange={(rate) => setRating(rate)}
-                        emptySymbol={<FaRegStar />}
-                        fullSymbol={<FaStar />}
-                    />
+                              Give a rating*
+                            </p>
+                            <Rating
+                              onChange={(rate) => setRating(rate)}
+                              emptySymbol={<FaRegStar />}
+                              fullSymbol={<FaStar />}
+                            /> */}
                     <button className="btn-1 w-36 ml-auto">Add</button>
                 </div>
             </form>

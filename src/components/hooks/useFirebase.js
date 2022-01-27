@@ -93,11 +93,13 @@ const useFirebase = () => {
         fetch(`https://dry-journey-24779.herokuapp.com/admin/${user?.email}`)
             .then(res => res.json())
             .then(data => {
-                if (data[0]?.role === "admin") {
-                    setIsAdmin(true);
-                } else {
-                    setIsAdmin(false);
-                }
+                console.log(data)
+                setIsAdmin(data);
+                // if (data === "admin") {
+
+                // } else {
+                //     setIsAdmin(false);
+                // }
             });
     }, [user?.email]);
     console.log(isAdmin);
