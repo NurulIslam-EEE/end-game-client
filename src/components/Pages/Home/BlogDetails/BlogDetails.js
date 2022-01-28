@@ -159,19 +159,27 @@ const BlogDetails = () => {
                     </form>
                 </div>
             </div>
-            {compareReview.length > 0 && <div>
-                <h1>Comparison</h1>
-
-                <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-10 my-20">
-
-                    {compareReview.map(com => (
-                        <>
-                            <h4>{com.name}</h4>
-                            <h5>{com.description}</h5></>
-                    ))}
-
-                </div>
-            </div>}
+            <div>
+                <h2 className="text-3xl ">Comparison Area:</h2>
+                {compareReview.length > 0 && (
+                    <div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 border gap-10 my-20">
+                            <div className="border-r text-2xl">
+                                <h4 className="border-b">Title</h4>
+                                <h4 className="border-b">Reviewer Name</h4>
+                                <h5>Rating</h5>
+                            </div>
+                            {compareReview.map((com) => (
+                                <div className="border-r text-2xl">
+                                    <h4 className="border-b">{com.title}</h4>
+                                    <h4 className="border-b">{com.name}</h4>
+                                    <h5>{com.rating}</h5>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                )}
+            </div>
 
             <div>
                 <h2>Users review</h2>

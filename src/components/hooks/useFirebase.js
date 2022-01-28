@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from 'react';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, GoogleAuthProvider, signInWithPopup, updateProfile, signOut } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, GoogleAuthProvider, sendEmailVerification, signInWithPopup, updateProfile, signOut } from "firebase/auth";
 import initializeAuthentication from "../Firebase/firebase.init";
 
 
@@ -21,6 +21,7 @@ const useFirebase = () => {
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 setAuthError('');
+                verifyEmail();
                 const newUser = { ...userCredential, displayName: name };
                 setUser(newUser);
                 // save user to the database
@@ -88,7 +89,15 @@ const useFirebase = () => {
     }, [auth])
 
 
-
+    const verifyEmail = () => {
+        const auth = getAuth();
+        sendEmailVerification(auth.currentUser)
+            .then((result) => {
+                console.log(result)
+                // Email verification sent!
+                // ...
+            })
+    }
     useEffect(() => {
         fetch(`https://dry-journey-24779.herokuapp.com/admin/${user?.email}`)
             .then(res => res.json())

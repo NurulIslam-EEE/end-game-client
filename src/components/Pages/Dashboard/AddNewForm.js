@@ -4,15 +4,22 @@ import { FaRegStar, FaStar } from "react-icons/fa";
 import Rating from "react-rating";
 import { useForm } from "react-hook-form";
 import swal from 'sweetalert';
+import useAuth from '../../hooks/useAuth';
 
 const AddNewForm = () => {
+    const { isAdmin } = useAuth();
     const { register, handleSubmit, reset } = useForm();
     const [rating, setRating] = React.useState();
 
     const onSubmit = (data) => {
         console.log(data);
         data["rating"] = 0;
-        data["status"] = "approved";
+
+        if (isAdmin) {
+            data["status"] = "approved";
+        } else {
+            data["status"] = "pending";
+        }
         axios
             .post("https://dry-journey-24779.herokuapp.com/blogs", data)
             .then((res) => {

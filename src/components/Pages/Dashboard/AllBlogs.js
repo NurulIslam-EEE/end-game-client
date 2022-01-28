@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import swal from 'sweetalert';
 const AllBlogs = () => {
     const [blogs, setBlogs] = useState([]);
+    const [isUpdated, setIsUpdated] = useState(false)
     useEffect(() => {
         fetch('https://dry-journey-24779.herokuapp.com/blogs')
             .then(res => res.json())
@@ -28,6 +29,26 @@ const AllBlogs = () => {
                 })
         }
     }
+    // functionality for  update status
+    const handleUpdateStatus = (id, blog) => {
+        // console.log(id , blog)
+        const updatedStatus = {
+            ...blog,
+            status: 'Approved'
+        }
+        // console.log(updatedStatus)
+        fetch(`https://dry-journey-24779.herokuapp.com/blogStatus/${id}`, {
+            method: "PUT",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(updatedStatus)
+        })
+            .then(res => res.json())
+            .then(data => {
+                setIsUpdated(true)
+            })
+    }
     return (
         <div>
             <table className="max-w-screen-xl mx-auto">
@@ -49,7 +70,7 @@ const AllBlogs = () => {
                             scope="col"
                             className="text-xs font-medium text-white px-6 py-3 text-left uppercase tracking-wider"
                         >
-                            Location
+                            Status
                         </th>
                         <th
                             scope="col"
@@ -64,16 +85,24 @@ const AllBlogs = () => {
                         <tr key={blog._id} className="bg-white border-b font-primary text-sm grid grid-cols-1 lg:grid-cols-6 place-items-center">
                             <td className="text-sm text-gray-500 px-6 py-4 whitespace-nowrap">{blog.title}</td>
                             <td className="text-sm text-gray-500 px-6 py-4 whitespace-nowrap">{blog.cost}</td>
-                            <td className="text-sm text-gray-500 px-6 py-4 whitespace-nowrap">{blog.location}</td>
+                            <td className="text-sm text-gray-500 px-6 py-4 whitespace-nowrap">{blog.status}</td>
                             <td className="text-sm text-gray-500 px-6 py-4 whitespace-nowrap">
                                 <button
-                                    className="bg-red-700 border-0 btn-1 mr-2"
+                                    className="bg-red-700 text-white p-2 border-0 mr-2"
                                     size="sm"
                                     onClick={() => handleDelete(blog._id)}
                                 >
                                     Delete
                                 </button>
-                                <Link to={`update/${blog._id}`}><button className="bg-red-700 border-0 btn-1 mr-2">Update</button></Link>
+                                <Link to={`update/${blog._id}`}><button className="bg-red-700 text-white border-0 p-2 mr-2">Update Data</button></Link>
+
+                                <button
+                                    className="bg-red-700 text-white p-2 mr-2"
+                                    size="sm"
+                                    onClick={() => handleUpdateStatus(blog._id, blog)}
+                                >
+                                    Status
+                                </button>
                             </td>
                         </tr>
                     )}
