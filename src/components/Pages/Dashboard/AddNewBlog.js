@@ -7,7 +7,7 @@ const AddNewBlog = () => {
             {/* heading  */}
             <div className="flex flex-col space-y-3 mb-4">
                 <h1 className="font-primary text-xl text-gray-700 m-0 text-left">Add New Blog</h1>
-                <div className="w-36 h-1 rounded-full bg-red-400"></div>
+                <div className="w-36 h-1 rounded-full bg-teal-400"></div>
             </div>
 
             {/* form  */}

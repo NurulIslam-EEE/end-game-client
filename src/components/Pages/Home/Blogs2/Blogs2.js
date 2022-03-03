@@ -15,9 +15,11 @@ const Blogs2 = () => {
         fetch('https://dry-journey-24779.herokuapp.com/blogs')
             .then(res => res.json())
             .then(data => {
-                setBlogs(data)
+                const filterData = data.filter((d) => d.status === "approved");
+                setBlogs(filterData);
+
                 data.sort((a, b) => b.rating - a.rating)
-                setTopBlogs(data)
+                setTopBlogs(data.slice(0, 5));
             });
     }, [])
     console.log(topBlogs, blogs)
@@ -27,15 +29,15 @@ const Blogs2 = () => {
     return (
         <section className="container my-20" id="tours">
             <h1>All Blog</h1>
-            <div className="flex">
-                <div className="flex-initial">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="md:flex">
+                <div className="flex-auto">
+                    <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4">
                         {currentBlogs.map((blog) => (
                             <Blog key={blog._id} data={blog} />
                         ))}
                     </div>
                 </div>
-                <div className="flex-1 ml-4" style={{ minWidth: "300px" }}>
+                <div className="flex-auto ml-2 min-w-fit " >
                     <h2 className="text-4xl mb-4">Top rated Spots</h2>
                     {topBlogs.map((blog) => (
                         <div className="top-blog border mb-4">
@@ -45,7 +47,7 @@ const Blogs2 = () => {
                             <div className="p-2">
                                 <h2 className=" font-bold">{blog.title}</h2>
                                 <p className="text-gray-600 my-3">
-                                    <span className="text-xl font-bold text-tomato">
+                                    <span className="text-xl font-bold teal-400">
                                         Total stars: {blog.rating}
                                     </span>{" "}
                                 </p>

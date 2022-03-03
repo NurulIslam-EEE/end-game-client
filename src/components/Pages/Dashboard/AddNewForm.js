@@ -68,7 +68,7 @@ const AddNewForm = () => {
                               emptySymbol={<FaRegStar />}
                               fullSymbol={<FaStar />}
                             /> */}
-                    <button className="btn-1 w-36 ml-auto">Add</button>
+                    <button className="bg-teal-400 hover:bg-transparent text-white font-semibold hover:text-teal-400 py-2 px-4 border border-transparent hover:border-teal-400 rounded mb-4">Add</button>
                 </div>
             </form>
         </div>

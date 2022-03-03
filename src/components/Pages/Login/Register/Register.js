@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import swal from "sweetalert";
 import useAuth from "../../../hooks/useAuth";
 
 const Register = () => {
   const [loginData, setLoginData] = useState({});
   const navigate = useNavigate();
-  const { user, registerUser, isLoading, authError } = useAuth();
+  const location = useLocation();
+  const { user, registerUser, isLoading, authError, signInWithGoogle } = useAuth();
 
   const handleOnBlur = (e) => {
     const field = e.target.name;
@@ -22,6 +23,9 @@ const Register = () => {
     }
     registerUser(loginData.email, loginData.password, loginData.name, navigate);
     e.preventDefault();
+  };
+  const handleGoogleSignIn = () => {
+    signInWithGoogle(location, navigate);
   };
   return (
     <>
@@ -68,14 +72,22 @@ const Register = () => {
 
                     <button
                       type="submit"
-                      className="btn-1 theme-bg text-white mb-3"
+                      className="bg-teal-400 hover:bg-transparent text-white font-semibold hover:text-teal-400 py-2 px-14 border border-transparent hover:border-teal-400 rounded mb-4"
                     >
                       Create an Account
                     </button>
                     <br />
                     <NavLink style={{ textDecoration: "none" }} to="/login">
-                      Already Registered? Please Login
+                      Already Registered? <span className='text-teal-400'> Please Login</span>
                     </NavLink>
+                    <br />
+                    <button
+                      onClick={handleGoogleSignIn}
+                      className="bg-teal-400 hover:bg-transparent text-white font-semibold hover:text-teal-400 py-2 px-14 border border-transparent hover:border-teal-400 rounded mt-4"
+                    >
+                      Sign in with Google
+                    </button>
+
                   </form>
                 )}
                 {isLoading && (

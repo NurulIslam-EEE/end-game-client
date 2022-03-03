@@ -54,12 +54,15 @@ const Login = () => {
                   required
                 />
 
-                <button type="submit" className="btn-1 theme-bg text-white mb-3">
+                <button type="submit"
+                  className="bg-teal-400 hover:bg-transparent text-white font-semibold hover:text-teal-400 py-2 px-20 border border-transparent hover:border-teal-400 rounded mb-4"
+
+                >
                   Log in
                 </button>
                 <br />
                 <NavLink style={{ textDecoration: "none" }} to="/register">
-                  New User? Please Register
+                  New User? <span className='text-teal-400'>Please Register</span>
                 </NavLink>
 
                 {isLoading && (
@@ -76,12 +79,13 @@ const Login = () => {
                 {authError &&
                   swal("Something went wrong!", `${authError}`, "error")}
               </form>
-              <p>-----------OR-------------</p>
+              <p>OR</p>
               <button
                 onClick={handleGoogleSignIn}
-                className="btn-1 text-white mb-3"
+                className="bg-teal-400 hover:bg-transparent text-white font-semibold hover:text-teal-400 py-2 px-14 border border-transparent hover:border-teal-400 rounded mt-4"
+
               >
-                Continue with Google
+                Sign in with Google
               </button>
             </div>
           </div>

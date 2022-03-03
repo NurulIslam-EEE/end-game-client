@@ -46,8 +46,8 @@ const Navigation = ({ bg, textColor, width }) => {
                         {/* brand  */}
                         <div className="flex items-center flex-grow">
                             <Link to="/" className="flex items-center space-x-2">
-                                <img src="../../../assets/logo.png" alt="logo" className="w-12 h-12" />
-                                <h1 className={`${changeHeader ? "text-gray-800" : `${textColor}`} text-3xl font-semibold select-none font-logo`}>Cholo Ghuri</h1>
+                                {/* <img src="../../../assets/logo.png" alt="logo" className="w-12 h-12" /> */}
+                                <h1 className={`${changeHeader ? "text-teal-400" : "text-white"} text-3xl font-semibold select-none font-logo`}>TRAVELEX</h1>
                             </Link>
                         </div>
 
@@ -58,7 +58,7 @@ const Navigation = ({ bg, textColor, width }) => {
                                     <ul className="flex items-center space-x-4">
                                         {menu.map(item => (
                                             <li key={item.id}>
-                                                <NavLink to={item.to} className={`${changeHeader ? "text-gray-700" : `${textColor} `} text-base`}>{item.text}</NavLink>
+                                                <NavLink to={item.to} className={`${changeHeader ? "text-teal-400" : `text-white `} text-base`}>{item.text}</NavLink>
                                             </li>
                                         ))}
                                     </ul>
@@ -71,14 +71,14 @@ const Navigation = ({ bg, textColor, width }) => {
                             {
                                 user.email ? (
                                     <div className="flex items-center space-x-3">
-                                        <img src="../../../assets/profile.png" alt={user.displayName} className="w-10 h-10 rounded-full" />
-                                        <span className={`${changeHeader ? "text-gray-700" : `${textColor}`}`}>{user.displayName}</span>
-                                        <button className="btn-1 px-3" onClick={logout}>Logout</button>
+                                        <img src="https://muslimmirror.com/eng/wp-content/uploads/2016/07/81460363127_freesize1.jpg" alt={user.displayName} className="w-10 h-10 rounded-full" />
+                                        <span className={`${changeHeader ? "text-teal-400" : `text-white`}`}>{user.displayName}</span>
+                                        <button className="bg-teal-400 hover:bg-transparent text-white font-semibold hover:text-teal-400 py-2 px-4 border border-transparent hover:border-teal-400 rounded mb-4" onClick={logout}>Logout</button>
                                     </div>
 
                                 ) : (
                                     <>
-                                        <button className="btn-1 px-3" onClick={handleChangeRoute}>Register</button>
+                                        <button className="bg-transparent hover:bg-teal-400 text-teal-400 font-semibold hover:text-white py-1 px-2 border border-teal-400 hover:border-transparent rounded" onClick={handleChangeRoute}>Register</button>
                                     </>
                                 )
                             }
@@ -110,13 +110,13 @@ const Navigation = ({ bg, textColor, width }) => {
                                     <div className="flex flex-col items-center space-y-3">
                                         <img src="../../../assets/profile.png" alt={user.displayName} className="w-10 h-10 rounded-full" />
                                         <span className="text-gray-700">{user.displayName}</span>
-                                        <button className="btn-1 px-3" onClick={logout}>Logout</button>
+                                        <button className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-1 px-2 border border-blue-500 hover:border-transparent rounded" onClick={logout}>Logout</button>
                                     </div>
 
                                 ) : (
                                     <>
                                         <div className="px-3 py-2">
-                                            <button className="btn-1 w-full" onClick={handleChangeRoute}>Register</button>
+                                            <button className="bg-transparent" onClick={handleChangeRoute}>Register</button>
                                         </div>
                                     </>
                                 )

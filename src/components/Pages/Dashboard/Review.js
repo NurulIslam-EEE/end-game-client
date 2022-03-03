@@ -36,7 +36,7 @@ const Review = () => {
     return (
         <div>
             <table className="max-w-screen-xl mx-auto">
-                <thead className="hidden lg:block bg-red-500 font-primary">
+                <thead className="hidden lg:block bg-teal-400  font-primary">
                     <tr className="grid grid-cols-1 lg:grid-cols-6 place-items-center">
                         <th
                             scope="col"
@@ -78,7 +78,7 @@ const Review = () => {
                             <td className="text-sm text-gray-500 px-6 py-4 whitespace-nowrap">{review.cost}</td>
                             <td className="text-sm text-gray-500 px-6 py-4 whitespace-nowrap">{review.status}</td>
                             <td className="text-sm text-gray-500 px-6 py-4 whitespace-nowrap">
-                                <button onClick={() => handleUpdateStatus(review._id, review)} className="btn btn-1">Update</button>
+                                <button onClick={() => handleUpdateStatus(review._id, review)} className="bg-teal-400 hover:bg-transparent text-white font-semibold hover:text-teal-400 py-2 px-4 border border-transparent hover:border-teal-400 rounded mb-4">Update</button>
                             </td>
                         </tr>
                     )}

@@ -7,7 +7,7 @@ import useAuth from "../../hooks/useAuth";
 // import SideMenu from "./SideMenu";
 
 const Dashboard = () => {
-    const { user, logout } = useAuth();
+    const { user, logout, isAdmin } = useAuth();
     const [sidenav, setSidenav] = useState(true);
 
     //toggling the side nav
@@ -37,12 +37,12 @@ const Dashboard = () => {
                                 <nav className="flex fixed flex-col items-center w-60 bg-white h-screen px-2">
                                     <div className="mt-5 flex flex-col items-center justify-center space-y-3">
                                         <Link to="/home">
-                                            <button className="btn-1 mb-3">Home</button>
+                                            <button className="bg-teal-400 hover:bg-transparent text-white font-semibold hover:text-teal-400 py-2 px-10 border border-transparent hover:border-teal-400 rounded mb-4">Home</button>
                                         </Link>
                                         {/* image  */}
                                         <img
-                                            src="../../assets/profile.png"
-                                            className="w-20 h-20 rounded-full object-contain mx-auto"
+                                            src="https://muslimmirror.com/eng/wp-content/uploads/2016/07/81460363127_freesize1.jpg"
+                                            className="w-20 h-20 rounded-full object-center mx-auto"
                                             alt={user.displayName}
                                         />
                                         {/* user info  */}
@@ -56,41 +56,41 @@ const Dashboard = () => {
                                         </div>
                                     </div>
                                     <div className="mt-10 mb-4">
-                                        <ul className="flex flex-col space-y-3">
-                                            <li className="bg-red-500 text-white flex items-center mb-3 rounded-md py-3 cursor-pointer px-2">
+                                        <ul className="flex flex-col space-y-2">
+                                            <li className=" text-white flex items-center mb-3 rounded-md  cursor-pointer px-2">
                                                 <Link to={`/dashboard/addNewBlog`}>
                                                     <div className="flex items-center space-x-3">
-                                                        <span className="ml-2 font-primary">Add New Blog</span>
+                                                        <span className="bg-teal-400 hover:bg-transparent text-white font-semibold hover:text-teal-400 py-2 px-4 border border-transparent hover:border-teal-400 rounded mb-4">Add New Blog</span>
                                                     </div>
                                                 </Link>
                                             </li>
                                         </ul>
-                                        <ul className="flex flex-col space-y-3">
-                                            <li className="bg-red-500 text-white flex items-center mb-3  rounded-md py-3 cursor-pointer px-2">
+                                        {(isAdmin && user?.email) && <ul className="flex flex-col space-y-2">
+                                            <li className="text-white flex items-center mb-3  rounded-md  cursor-pointer px-2">
                                                 <Link to={`/dashboard/makeAdmin`}>
                                                     <div className="flex items-center space-x-3">
-                                                        <span className="ml-2 font-primary">Make Admin</span>
+                                                        <span className="bg-teal-400 hover:bg-transparent text-white font-semibold hover:text-teal-400 py-2 px-4 border border-transparent hover:border-teal-400 rounded mb-4">Make Admin</span>
                                                     </div>
                                                 </Link>
                                             </li>
-                                            <li className="bg-red-500 text-white flex items-center mb-3  rounded-md py-3 cursor-pointer px-2">
+                                            <li className="text-white flex items-center mb-3  rounded-md cursor-pointer px-2">
                                                 <Link to={`/dashboard/allBlogs`}>
                                                     <div className="flex items-center space-x-3">
-                                                        <span className="ml-2 font-primary">Manage Blogs</span>
+                                                        <span className="bg-teal-400 hover:bg-transparent text-white font-semibold hover:text-teal-400 py-2 px-4 border border-transparent hover:border-teal-400 rounded mb-4">Manage Blogs</span>
                                                     </div>
                                                 </Link>
                                             </li>
-                                            <li className="bg-red-500 text-white flex items-center mb-3  rounded-md py-3 cursor-pointer px-2">
+                                            <li className=" text-white flex items-center mb-3  rounded-md  cursor-pointer px-2">
                                                 <Link to={`/dashboard/reviews`}>
                                                     <div className="flex items-center space-x-3">
-                                                        <span className="ml-2 font-primary">Manage Review</span>
+                                                        <span className="bg-teal-400 hover:bg-transparent text-white font-semibold hover:text-teal-400 py-2 px-2 border border-transparent hover:border-teal-400 rounded mb-4">Manage Review</span>
                                                     </div>
                                                 </Link>
                                             </li>
-                                        </ul>
-                                        <button className="btn-1 mt-2" onClick={logout}>
+                                        </ul>}
+                                        <button className="" onClick={logout}>
                                             <div className="flex items-center space-x-3">
-                                                <span className="ml-2 font-primary">Log Out</span>
+                                                <span className="bg-teal-400 hover:bg-transparent text-white font-semibold hover:text-teal-400 py-2 px-10 border border-transparent hover:border-teal-400 rounded mb-4">Log Out</span>
                                             </div>
                                         </button>
                                     </div>

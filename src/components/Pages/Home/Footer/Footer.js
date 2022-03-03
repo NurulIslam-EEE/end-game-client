@@ -24,8 +24,8 @@ const Footer = () => {
                     {/* brand  */}
                     <div className="flex items-center flex-grow">
                         <Link to="/" className="flex items-center space-x-2">
-                            <img src="../../../assets/logo.png" alt="logo" className="w-12 h-12" />
-                            <h1 className={`text-3xl font-semibold text-gray-800 select-none font-logo`}>Cholo Ghuri</h1>
+                            {/* <img src="../../../assets/logo.png" alt="logo" className="w-12 h-12" /> */}
+                            <h1 className={`text-3xl font-semibold text-gray-800 select-none font-logo`}>TRAVELEX</h1>
                         </Link>
                     </div>
                 </div>
@@ -66,7 +66,7 @@ const Footer = () => {
 
                 </div>
             </div>
-            <div className="bg-red-500">
+            <div className="bg-teal-500">
                 <div className="max-w-screen-xl mx-auto py-4 px-5 flex flex-wrap flex-col justify-center sm:flex-row">
                     <p className="text-white text-sm text-center sm:text-left">© 2022 Developed by —
                         <a href="https://github.com/NurulIslam-EEE/" rel="noopener noreferrer" className="text-white ml-1" target="_blank">Nurul Islam</a>

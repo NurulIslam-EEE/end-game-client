@@ -33,12 +33,12 @@ const User = ({ user, mail }) => {
 
         <>
             <tbody>
-                <tr className="bg-white border-b font-primary text-sm grid grid-cols-1 lg:grid-cols-6 place-items-center">
+                <tr className="bg-white border-b font-primary text-sm grid grid-cols-1 lg:grid-cols-4 place-items-center">
                     <td className="text-sm text-gray-500 px-6 py-4 whitespace-nowrap">{email}</td>
                     <td className="text-sm text-gray-500 px-6 py-4 whitespace-nowrap">{currentRole}</td>
                     <td className="text-sm text-gray-500 px-6 py-4 whitespace-nowrap">
                         <button
-                            className="button-color border-0 btn-1"
+                            className="bg-teal-400 hover:bg-transparent text-white font-semibold hover:text-teal-400 py-2 px-4 border border-transparent hover:border-teal-400 rounded mb-4"
                             size="sm"
                             onClick={() => handleChange(user.email, user.role)}
                         >

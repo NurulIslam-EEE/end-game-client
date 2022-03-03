@@ -11,7 +11,7 @@ const AllBlogs = () => {
                 // setIsUpdated(false)
                 setBlogs(data)
             })
-    }, [])
+    }, [isUpdated])
     const handleDelete = id => {
         const proceed = window.confirm('Are you sure you want to delete');
         if (proceed) {
@@ -34,7 +34,7 @@ const AllBlogs = () => {
         // console.log(id , blog)
         const updatedStatus = {
             ...blog,
-            status: 'Approved'
+            status: 'approved'
         }
         // console.log(updatedStatus)
         fetch(`https://dry-journey-24779.herokuapp.com/blogStatus/${id}`, {
@@ -51,9 +51,9 @@ const AllBlogs = () => {
     }
     return (
         <div>
-            <table className="max-w-screen-xl mx-auto">
-                <thead className="hidden lg:block bg-red-500 font-primary">
-                    <tr className="grid grid-cols-1 lg:grid-cols-6 place-items-center">
+            <table className="max-w-screen-lg mx-auto">
+                <thead className="hidden lg:block bg-teal-400 font-primary">
+                    <tr className="grid grid-cols-1 lg:grid-cols-4 place-items-center">
                         <th
                             scope="col"
                             className="text-xs font-medium text-white px-6 py-3 text-left uppercase tracking-wider"
@@ -82,22 +82,22 @@ const AllBlogs = () => {
                 </thead>
                 <tbody>
                     {blogs.map(blog =>
-                        <tr key={blog._id} className="bg-white border-b font-primary text-sm grid grid-cols-1 lg:grid-cols-6 place-items-center">
+                        <tr key={blog._id} className="bg-white border-b font-primary text-sm grid grid-cols-1 lg:grid-cols-4 place-items-center">
                             <td className="text-sm text-gray-500 px-6 py-4 whitespace-nowrap">{blog.title}</td>
                             <td className="text-sm text-gray-500 px-6 py-4 whitespace-nowrap">{blog.cost}</td>
                             <td className="text-sm text-gray-500 px-6 py-4 whitespace-nowrap">{blog.status}</td>
                             <td className="text-sm text-gray-500 px-6 py-4 whitespace-nowrap">
                                 <button
-                                    className="bg-red-700 text-white p-2 border-0 mr-2"
+                                    className="bg-teal-400 text-white p-2 border-0 mr-2"
                                     size="sm"
                                     onClick={() => handleDelete(blog._id)}
                                 >
                                     Delete
                                 </button>
-                                <Link to={`update/${blog._id}`}><button className="bg-red-700 text-white border-0 p-2 mr-2">Update Data</button></Link>
+                                <Link to={`update/${blog._id}`}><button className="bg-teal-400 text-white border-0 p-2 mr-2">Update Data</button></Link>
 
                                 <button
-                                    className="bg-red-700 text-white p-2 mr-2"
+                                    className="bg-teal-400 text-white p-2 mr-2"
                                     size="sm"
                                     onClick={() => handleUpdateStatus(blog._id, blog)}
                                 >

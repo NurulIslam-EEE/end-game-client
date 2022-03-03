@@ -1,12 +1,12 @@
 /* css for banner componet */
 .banner {
-    background: linear-gradient(#0000007d, #0003),
-      url("../../../../../public/assets/banner.jpg");
-  
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    width: 100%;
-    height: 100%;
-    color: #ce5739;
-  }
+  background: linear-gradient(#0000007d, #0003),
+    url("https://images.pexels.com/photos/2577274/pexels-photo-2577274.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
+
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+  color: #ce5739;
+}

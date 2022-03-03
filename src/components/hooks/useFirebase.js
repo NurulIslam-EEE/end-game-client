@@ -124,7 +124,7 @@ const useFirebase = () => {
 
     const saveUser = (email, displayName, method) => {
         const user = { email, displayName, role: 'user' };
-        fetch('http://localhost:5000/users', {
+        fetch('https://dry-journey-24779.herokuapp.com/users', {
             method: method,
             headers: {
                 'content-type': 'application/json'

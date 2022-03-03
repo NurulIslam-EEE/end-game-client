@@ -69,8 +69,12 @@ const BlogDetails = () => {
     useEffect(() => {
         fetch(`https://dry-journey-24779.herokuapp.com/review`)
             .then((res) => res.json())
-            .then((data) => setReviews(data));
-    }, []);
+            .then((data) => {
+                const filterBlogs = data.filter(blg => blg.title === blog.title)
+                setReviews(filterBlogs)
+                console.log(data, filterBlogs)
+            });
+    }, [blog?.title]);
     const handleCompare = (id) => {
         const filterReview = reviews.filter(review => review._id === id)
         const allReviews = [...filterReview, ...compareReview]
@@ -160,9 +164,11 @@ const BlogDetails = () => {
                 </div>
             </div>
             <div>
-                <h2 className="text-3xl ">Comparison Area:</h2>
+
                 {compareReview.length > 0 && (
+
                     <div>
+                        <h2 className="text-3xl ">Comparison Area:</h2>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 border gap-10 my-20">
                             <div className="border-r text-2xl">
                                 <h4 className="border-b">Title</h4>

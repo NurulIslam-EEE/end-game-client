@@ -23,11 +23,11 @@ const MakeAdmin = () => {
             <div className="flex flex-col space-y-3 mb-4">
 
                 <h1 className="font-primary m-0 text-xl text-gray-700 text-left">Make Admin</h1>
-                <div className="w-36 h-1 rounded-full bg-red-400"></div>
+                <div className="w-36 h-1 rounded-full bg-teal-400"></div>
             </div>
             <table className="max-w-screen-xl mx-auto">
-                <thead className="hidden lg:block bg-red-500 font-primary">
-                    <tr className="grid grid-cols-1 lg:grid-cols-6 place-items-center">
+                <thead className="hidden lg:block bg-teal-500 font-primary">
+                    <tr className="grid grid-cols-1 lg:grid-cols-4 place-items-center">
                         <th
                             scope="col"
                             className="text-xs font-medium text-white px-6 py-3 text-left uppercase tracking-wider"
